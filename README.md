@@ -510,19 +510,19 @@ awk '{print $1 "\t" $2 "\t" $3-150 "\t" $3+150 "\t" $3 "\t" $4 "\t" $5 "\t" $6 "
 awk '{gsub(/scaffold/,""); print}' start-end.teinsertions |awk '{if ($2 <= 30) print $0}'|sort -V -k2,2 -k3,3|awk '{print $1 "\tscaffold" $2 "\t" $3 "\t" $4 "\t" $5"\t" $6 "\t" $7 "\t" $8 "\t" $9 "\t" $10 "\t" $11}' > start-end.teinsertions.sorted
 
 # exctract insertions found in each population
-awk '{if ($1 == 1) print $0}' tart-end.teinsertions.sorted > tenerife.tmp.bed
-awk '{if ($1 == 2) print $0}' tart-end.teinsertions.sorted > itabuna.tmp.bed
+awk '{if ($1 == 1) print $0}' start-end.teinsertions.sorted > tenerife.tmp.bed
+awk '{if ($1 == 2) print $0}' start-end.teinsertions.sorted > itabuna.tmp.bed
 
 # add ids (population+number) to make manual curation slightly easier
-awk -F'\t' 'BEGIN {OFS = FS} {id++}{print $1,$2,$3,$4,"tenerife"id,$6,$7,$8,$9,$10}' tenerife.tmp.bed > tmp && mv tmp tenerife.tmp.bed
-awk -F'\t' 'BEGIN {OFS = FS} {id++}{print $1,$2,$3,$4,"itabuna"id,$6,$7,$8,$9,$10}' itabuna.tmp.bed > tmp && mv tmp itabuna.tmp.bed
+awk -F'\t' 'BEGIN {OFS = FS} {id++}{print $2,$3,$4,"tenerife"id,$6,$7,$8,$9,$10}' tenerife.tmp.bed > tmp && mv tmp tenerife.tmp.bed
+awk -F'\t' 'BEGIN {OFS = FS} {id++}{print $2,$3,$4,"itabuna"id,$6,$7,$8,$9,$10}' itabuna.tmp.bed > tmp && mv tmp itabuna.tmp.bed
 
 #Get shared entries
-bedtools intersect -a tenerife.tmp.bed -b itabuna.tmp.bed -names  itabuna -sorted -wao -f 0.5 -r |awk '{if ($21>=150 && $6==$16) print $0}' > te.insertions.shared.between.tenerife.itabuna.txt
+bedtools intersect -a tenerife.tmp.bed -b itabuna.tmp.bed -names  itabuna -sorted -wao -f 0.5 -r |awk '{if ($19>=150 && $6==$15) print $0}' > te.insertions.shared.between.tenerife.itabuna.txt
 
 #Get unique entries
-bedtools intersect -a tenerife.tmp.bed -b itabuna.tmp.bed -names  itabuna -sorted -wao -f 0.5 -r |awk '{if ($21==0 || $6!=$16) print $0}' > te.insertions.unique.tenerife.txt
-bedtools intersect -a itabuna.tmp.bed -b tenerife.tmp.bed -names  tenerife -sorted -wao -f 0.5 -r |awk '{if ($21==0 || $6!=$16) print $0}' > te.insertions.unique.itabuna.txt
+bedtools intersect -a tenerife.tmp.bed -b itabuna.tmp.bed -names  itabuna -sorted -wao -f 0.5 -r |awk '{if ($19==0 || $6!=$15) print $0}' > te.insertions.unique.tenerife.txt
+bedtools intersect -a itabuna.tmp.bed -b tenerife.tmp.bed -names  tenerife -sorted -wao -f 0.5 -r |awk '{if ($19==0 || $6!=$15) print $0}' > te.insertions.unique.itabuna.txt
 
 # manually check for double entries to get the final set of TEs:
 ```
