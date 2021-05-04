@@ -504,7 +504,7 @@ java -jar popoolationte2/popte2.jar pairupSignatures \
 
 ```bash
 # add -/+150 bp to the TE location calculated by PoPoolatioTE2
-awk '{print $1 "\t" $2 "\t" $3-150 "\t" $3+150 "\t" $3 "\t" $4 "\t" $5 "\t" $6 "\t" $7 "\t" $8 "\t" $9}' ttenerife.itabuna.homogenized.RM.filtered.onlyTE.teinsertions > start-end.teinsertions
+awk '{print $1 "\t" $2 "\t" $3-150 "\t" $3+150 "\t" $3 "\t" $4 "\t" $5 "\t" $6 "\t" $7 "\t" $8 "\t" $9}' ss.tenerife.itabuna.ppileup.RM.filtered.teinsertions > start-end.teinsertions
 
 # get TE insertions identified in the 30 largest scaffold
 awk '{gsub(/scaffold/,""); print}' start-end.teinsertions |awk '{if ($2 <= 30) print $0}'|sort -V -k2,2 -k3,3|awk '{print $1 "\tscaffold" $2 "\t" $3 "\t" $4 "\t" $5"\t" $6 "\t" $7 "\t" $8 "\t" $9 "\t" $10 "\t" $11}' > start-end.teinsertions.sorted
