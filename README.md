@@ -272,7 +272,7 @@ perl popoolation_1.2.2/Variance-sliding.pl \
 --fastq-type sanger
 ```
 
-#### 2) Computing genetic differentiation (_F_<sub>st</sub>) from pool-seq data by [PoPoolation2](https://sourceforge.net/p/popoolation2/wiki/Main/):
+#### 2) Computing genetic differentiation (_F_<sub>ST</sub>) from pool-seq data by [PoPoolation2](https://sourceforge.net/p/popoolation2/wiki/Main/):
 
 ```bash
 # construct the mpileup:
@@ -285,7 +285,7 @@ java -ea -Xmx12g -jar popoolation2_1201/mpileup2sync.jar \
 --fastq-type sanger \
 --min-qual 20 --threads 20
 
-# calculate Fst
+# calculate (_F_<sub>ST</sub>)
 perl popoolation2_1201/fst-sliding.pl \
 --input tenerife_itabuna.sync \
 --output tenerife_itabuna_100kb10kb.fst \
