@@ -285,7 +285,7 @@ java -ea -Xmx12g -jar popoolation2_1201/mpileup2sync.jar \
 --fastq-type sanger \
 --min-qual 20 --threads 20
 
-# calculate (_F_<sub>ST</sub>)
+# calculate Fst
 perl popoolation2_1201/fst-sliding.pl \
 --input tenerife_itabuna.sync \
 --output tenerife_itabuna_100kb10kb.fst \
