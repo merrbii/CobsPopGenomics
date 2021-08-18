@@ -222,11 +222,11 @@ for i in {1..30}; do shapeit -convert --input-haps scaffold_$i.phased.haps.gz sc
 ```
 
 #### 2) Demographic population history analysis [MSMC2](https://github.com/stschiff/msmc2)
-To run MSMC2, check ([Schiffels & Wang, 2020](https://link.springer.com/protocol/10.1007/978-1-0716-0199-0_7)) for a very nice and detailed description of how to estimate effective population size (N<sub>e</sub>) and the relative cross-coalescence rate (rCCR). The [GitHub](https://github.com/stschiff/msmc2) repository has also some nice resources.
+To run MSMC2, check ([Schiffels & Wang, 2020](https://link.springer.com/protocol/10.1007/978-1-0716-0199-0_7)) for a very nice and detailed description of how to estimate effective population size (_N_<sub>e</sub>) and the relative cross-coalescence rate (rCCR). The [GitHub](https://github.com/stschiff/msmc2) repository has also some nice resources.
 
 ### IV- Population genomic analyses
 
-#### 1) Computing nucleotide diversity ($\pi$) and Tajima's _D_ from pool-seq data using [PoPoolation](https://sourceforge.net/projects/popoolation/)
+#### 1) Computing nucleotide diversity (&#960;) and Tajima's _D_ from pool-seq data using [PoPoolation](https://sourceforge.net/projects/popoolation/)
 
 
 
