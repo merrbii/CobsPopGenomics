@@ -2,7 +2,7 @@
 # Bioinformatic pipeline from analyzing genomic data of _Cardiocondyla obscurior_
 ##### By Mohammed Errbii "Simo"
 
-This markdown document gives a detailed description of the bioinformatic steps followed to analyze WGS of pools and single individuals of _Cardiocondyla obscurior_. Please have a look on our [paper](https://onlinelibrary.wiley.com/doi/10.1111/mec.16099) for further details on our research hypotheses and major findings.
+This markdown document gives a detailed description of the bioinformatic steps followed to analyze WGS of pools and single individuals of _Cardiocondyla obscurior_. Please have a look at our [paper](https://onlinelibrary.wiley.com/doi/10.1111/mec.16099) for further details on our research hypotheses and major findings.
 
 ### I- Mapping, variant calling and filtering
 #### 1) Filter raw reads for BQ > 20 and minimum length > 40bp by using [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)
