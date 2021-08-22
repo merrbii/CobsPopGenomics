@@ -500,7 +500,7 @@ java -jar popoolationte2/popte2.jar pairupSignatures \
 --max-distance 300 \
 --output ss.tenerife.itabuna.ppileup.RM.filtered.teinsertions
 ```
-* **_Processing the tenerife.itabuna.homogenized.RM.filtered.teinsertions_**
+* **_Processing the ss.tenerife.itabuna.ppileup.RM.filtered.teinsertions_**
 
 ```bash
 # add -/+150 bp to the TE location calculated by PoPoolatioTE2
