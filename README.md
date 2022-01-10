@@ -299,7 +299,7 @@ perl popoolation2_1201/fst-sliding.pl \
 --suppress-noninformative
 ```
 
-### IV- Repeat quantification and TE insertions identification
+### V- Repeat quantification and TE insertions identification
 
 #### 1) Running [dnaPipeTE](https://github.com/clemgoub/dnaPipeTE)
 
