@@ -334,7 +334,8 @@ awk 'FS=" " {if (!$7) print $3"\t"$1"\t"$2"\t"$4"\t"$5"\t"$6"\t"$7}' reads_per_c
 ```
 Then go to R:
 ```R
-#get the no of reads from the blast sample in the Annotation folder
+#get the total bp number used during the blastn step. Can be retrieved from the Counts.txt file
+
 Tenerife <- 19173155
 Itabuna <- 19173092
 
@@ -419,17 +420,20 @@ awk '{print $1"\t"$3"\t" $2}' te-hierarchy.txt > tmp.te && mv tmp.te te-hierarch
 ```
 
 * **_Map reads to the TE-combined-reference_**
+(for each population!)
 
 ```bash
 # Index the TE-masked ref genome
 bwa index Cobs2.1.temergedref.fa
 
 # map reads with bwa bwasw in batch
-bwa bwasw -t 20 Cobs2.1.temergedref.fa pool.R1.fastq.gz >pool.R1.sam
+bwa bwasw -t 20 Cobs2.1.temergedref.fa pool_R1_paired.fastq.gz >pool.R1.sam
+bwa bwasw -t 20 Cobs2.1.temergedref.fa pool_R2_paired.fastq.gz >pool.R2.sam
 ```
 
 
 * **_Restore paired-end information with PoPoolationTE2 se2pe_**
+(for each population!)
 
 ```bash
 
@@ -444,6 +448,7 @@ java -jar popoolationte2/popte2.jar se2pe \
 
 * **_Generate the ppileup file_**
 
+By following the previous steps, you generate a BAM file for each population. In my case, these were the Tenerife and the Itabuna BAM files.
 ```bash
 
 java -jar popoolationte2/popte2.jar ppileup \
@@ -524,6 +529,6 @@ bedtools intersect -a tenerife.tmp.bed -b itabuna.tmp.bed -names  itabuna -sorte
 bedtools intersect -a tenerife.tmp.bed -b itabuna.tmp.bed -names  itabuna -sorted -wao -f 0.5 -r |awk '{if ($19==0 || $6!=$15) print $0}' > te.insertions.unique.tenerife.txt
 bedtools intersect -a itabuna.tmp.bed -b tenerife.tmp.bed -names  tenerife -sorted -wao -f 0.5 -r |awk '{if ($19==0 || $6!=$15) print $0}' > te.insertions.unique.itabuna.txt
 
-# manually check for double entries to get the final set of TEs:
+# manually check for double entries to get the final set of TEs
 ```
 
