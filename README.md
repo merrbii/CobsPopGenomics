@@ -420,6 +420,7 @@ awk '{print $1"\t"$3"\t" $2}' te-hierarchy.txt > tmp.te && mv tmp.te te-hierarch
 ```
 
 * **_Map reads to the TE-combined-reference_**
+
 (for each population!)
 
 ```bash
@@ -433,6 +434,7 @@ bwa bwasw -t 20 Cobs2.1.temergedref.fa pool_R2_paired.fastq.gz >pool.R2.sam
 
 
 * **_Restore paired-end information with PoPoolationTE2 se2pe_**
+
 (for each population!)
 
 ```bash
