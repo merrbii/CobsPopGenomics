@@ -408,15 +408,39 @@ Cobs2.1.reference.fa
 ```
 
 ```bash
+# use .out or .gff output file (from RM) to generate TE annotation (BED format)
+cat Cobs2.1.clean.fa.out|tail +3|awk -vOFS="\t" -vFS=" " '{print $5,$6,$7,$10}' > Cobs.2.1.RM.TE.bed
+```
+
+```bash
+# extract TE sequences
+bedtools getfasta -s -name -fi Cobs2.1.reference.fa -fo Cobs2.1.TEseqs.fa -bed Cobs.2.1.RM.TE.bed
+```
+
+```bash
 # merge TE lib and ref genome
-cat Cobs2.1.reference.fa.masked TE.lib > Cobs2.1.temergedref.fa
+cat Cobs2.1.reference.fa.masked Cobs2.1.TEseqs.fa > Cobs2.1.temergedref.fa
 ```
 
 ```bash
 # generate TE hierarchy
+cat Cobs2.1.TEseqs.fa|grep '^>'|sed 's/>//g' > te-hierarchy.tmp.txt
 
-cat TE.lib|grep '^>'|perl -pe 's/>//' |cut -f1 -d" "|tr "#" "\t"|tr "/" "\t" > te-hierarchy.txt
-awk '{print $1"\t"$3"\t" $2}' te-hierarchy.txt > tmp.te && mv tmp.te te-hierarchy.txt
+# use te-hierarchy.tmp.txt and Cobs.2.1.RM.TE.bed last column info on annotated TE family/order to obtain the final te-hierarchy.txt file. This file should look like:
+# these are three columns the first one should match the header ">" of annotated TEs in you reference, i.e. in Cobs2.1.TEseqs.fa. the second and third reflect information on the TE family/order (4th column of Cobs.2.1.RM.TE.bed). Headers (id	family	order) are expected.
+
+id	family	order
+DNA::scaffold1:4-29()	DNA	DNA
+Satellite::scaffold1:30-208()	Satellite	Satellite
+DNA::scaffold1:209-224()	DNA	DNA
+DNA::scaffold1:9183-9341()	DNA	DNA
+LTR/ERVK::scaffold1:41689-41797()	ERVK	LTR
+LINE/Penelope::scaffold1:41732-41806()	Penelope	LINE
+DNA::scaffold1:41754-41819()	DNA	DNA
+DNA/PIF-ISL2EU::scaffold1:41756-41844()	PIF-ISL2EU	DNA
+LTR/ERV1::scaffold1:41820-41831()	ERV1	LTR
+
+
 ```
 
 * **_Map reads to the TE-combined-reference_**
