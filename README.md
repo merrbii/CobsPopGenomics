@@ -409,7 +409,7 @@ Cobs2.1.reference.fa
 
 ```bash
 # use .out or .gff output file (from RM) to generate TE annotation (BED format)
-cat Cobs2.1.clean.fa.out|tail +3|awk -vOFS="\t" -vFS=" " '{print $5,$6,$7,$10}' > Cobs.2.1.RM.TE.bed
+cat Cobs2.1.clean.fa.out|tail +4|awk -vOFS="\t" -vFS=" " '{print $5,$6,$7,$10}' > Cobs.2.1.RM.TE.bed
 ```
 
 ```bash
