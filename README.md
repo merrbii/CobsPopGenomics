@@ -429,17 +429,21 @@ cat Cobs2.1.TEseqs.fa|grep '^>'|sed 's/>//g' > te-hierarchy.tmp.txt
 # use te-hierarchy.tmp.txt and Cobs.2.1.RM.TE.bed last column info on annotated TE family/order to obtain the final te-hierarchy.txt file. This file should look like:
 # these are three columns the first one should match the header ">" of annotated TEs in you reference, i.e. in Cobs2.1.TEseqs.fa. the second and third reflect information on the TE family/order (4th column of Cobs.2.1.RM.TE.bed). Headers (id	family	order) are expected.
 
-id	family	order
-DNA::scaffold1:4-29()	DNA	DNA
-Satellite::scaffold1:30-208()	Satellite	Satellite
-DNA::scaffold1:209-224()	DNA	DNA
-DNA::scaffold1:9183-9341()	DNA	DNA
-LTR/ERVK::scaffold1:41689-41797()	ERVK	LTR
-LINE/Penelope::scaffold1:41732-41806()	Penelope	LINE
-DNA::scaffold1:41754-41819()	DNA	DNA
-DNA/PIF-ISL2EU::scaffold1:41756-41844()	PIF-ISL2EU	DNA
-LTR/ERV1::scaffold1:41820-41831()	ERV1	LTR
+# for example a command that worked for me is: PLEASE check the output carefully!! This worked for my own formatting and might not work for yours:
 
+paste <(cat te-hierarchy.tmp.txt ) <(cat Cobs2.1.clean.fa.out|tail +4|awk -vOFS="\t" -vFS=" " '{print $11}'|tr "/" "\t"|awk 'NF<2{ a=""; for(i=1;i<=2-NF;i++){a=a$1 }$0=$0" "a}1') > te-hierarchy.txt
+
+# after adding the header line, you should get something like:
+id      family  order
+R1-LOA-1b_Hpar::scaffold_1:38-191()     LINE    R1-LOA
+R1-LOA-1b_Hpar::scaffold_1:210-363()    LINE    R1-LOA
+R1-LOA-1b_Hpar::scaffold_1:382-535()    LINE    R1-LOA
+R1-LOA-1b_Hpar::scaffold_1:554-707()    LINE    R1-LOA
+R1-LOA-1b_Hpar::scaffold_1:726-879()    LINE    R1-LOA
+R1-LOA-1b_Hpar::scaffold_1:898-1051()   LINE    R1-LOA
+R1-LOA-1b_Hpar::scaffold_1:1070-1223()  LINE    R1-LOA
+R1-LOA-1b_Hpar::scaffold_1:1242-1395()  LINE    R1-LOA
+R1-LOA-1b_Hpar::scaffold_1:1414-1567()  LINE    R1-LOA
 
 ```
 
