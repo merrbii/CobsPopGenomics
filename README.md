@@ -436,15 +436,15 @@ paste <(cat te-hierarchy.tmp.txt ) <(cat Cobs2.1.clean.fa.out|tail +4|awk -vOFS=
 
 # after adding the header line, you should get something like:
 id      family  order
-R1-LOA-1b_Hpar::scaffold_1:38-191()     LINE    R1-LOA
-R1-LOA-1b_Hpar::scaffold_1:210-363()    LINE    R1-LOA
-R1-LOA-1b_Hpar::scaffold_1:382-535()    LINE    R1-LOA
-R1-LOA-1b_Hpar::scaffold_1:554-707()    LINE    R1-LOA
-R1-LOA-1b_Hpar::scaffold_1:726-879()    LINE    R1-LOA
-R1-LOA-1b_Hpar::scaffold_1:898-1051()   LINE    R1-LOA
-R1-LOA-1b_Hpar::scaffold_1:1070-1223()  LINE    R1-LOA
-R1-LOA-1b_Hpar::scaffold_1:1242-1395()  LINE    R1-LOA
-R1-LOA-1b_Hpar::scaffold_1:1414-1567()  LINE    R1-LOA
+R1-LOA-1b_Hpar::scaffold_1:38-191()     R1-LOA  LINE
+R1-LOA-1b_Hpar::scaffold_1:210-363()    R1-LOA  LINE
+R1-LOA-1b_Hpar::scaffold_1:382-535()    R1-LOA  LINE
+R1-LOA-1b_Hpar::scaffold_1:554-707()    R1-LOA  LINE
+R1-LOA-1b_Hpar::scaffold_1:726-879()    R1-LOA  LINE
+R1-LOA-1b_Hpar::scaffold_1:898-1051()   R1-LOA  LINE
+R1-LOA-1b_Hpar::scaffold_1:1070-1223()  R1-LOA  LINE
+R1-LOA-1b_Hpar::scaffold_1:1242-1395()  R1-LOA  LINE
+R1-LOA-1b_Hpar::scaffold_1:1414-1567()  R1-LOA  LINE
 
 ```
 
