@@ -431,7 +431,8 @@ cat Cobs2.1.TEseqs.fa|grep '^>'|sed 's/>//g' > te-hierarchy.tmp.txt
 
 # for example a command that worked for me is: PLEASE check the output carefully!! This worked for my own formatting and might not work for yours:
 
-paste <(cat te-hierarchy.tmp.txt ) <(cat Cobs2.1.clean.fa.out|tail +4|awk -vOFS="\t" -vFS=" " '{print $11}'|tr "/" "\t"|awk 'NF<2{ a=""; for(i=1;i<=2-NF;i++){a=a$1 }$0=$0" "a}1') > te-hierarchy.txt
+paste <(cat te-hierarchy.tmp.txt ) <(cat Cobs2.1.clean.fa.out|tail +4|awk -vOFS="\t" -vFS=" " '{print $11}'|tr "/" "\t"|awk 'NF<2{ a=""; for(i=1;i<=2-NF;i++){a=a$1 }$0=$0" "a}1')|awk -vOFS="\t" '{print $1,$3,$2}' > te-hierarchy.tab
+
 
 # after adding the header line, you should get something like:
 id      family  order
